@@ -1,10 +1,6 @@
 import { vi } from 'vitest'
 
-// The codebase relies heavily on Bun’s build-time feature gating.
-// In Node-based tests we default all feature flags to false.
-vi.mock('bun:bundle', () => ({
-  feature: (_name: string) => false,
-}))
+// The `bun:bundle` shim is provided via `vitest.config.ts` resolve.alias.
 
 // Some internal Anthropic packages are referenced by the leaked source but are not
 // available on the public npm registry. For baseline tests we stub them so that

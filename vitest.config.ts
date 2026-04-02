@@ -3,6 +3,8 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   resolve: {
     alias: {
+      // Bun-only module specifiers: provide stable Node test shims.
+      'bun:bundle': new URL('./test/stubs/bun-bundle.ts', import.meta.url).pathname,
       // The leaked source references React compiler runtime, which isn't
       // published as an export in stable React packages. Tests don't need it.
       'react/compiler-runtime': new URL('./test/stubs/react-compiler-runtime.ts', import.meta.url)
